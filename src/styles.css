@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Gloock&display=swap");
+@import "tailwindcss";
+
+:root {
+  color: #233127;
+  background: #f1eee4;
+  font-family: "DM Sans", sans-serif;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.home {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  isolation: isolate;
+}
+
+.home::before {
+  position: absolute;
+  z-index: -1;
+  right: -15vmin;
+  bottom: -30vmin;
+  width: 75vmin;
+  height: 75vmin;
+  border: 1px solid rgb(35 49 39 / 16%);
+  border-radius: 50%;
+  content: "";
+}
+
+.home__mark {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  animation: arrive 700ms ease-out both;
+}
+
+.home__mark span {
+  border-radius: 2rem 2rem 0 0;
+  background: #c86442;
+}
+
+.home__mark span:last-child {
+  transform: rotate(180deg);
+  background: #687a59;
+}
+
+.home__content {
+  width: min(58rem, 90vw);
+  align-self: center;
+  margin: 8vh 0;
+}
+
+.home__eyebrow,
+.home__note {
+  color: #687a59;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home__eyebrow {
+  animation: arrive 700ms 100ms ease-out both;
+}
+
+h1 {
+  max-width: 14ch;
+  margin: 0.4em 0 0;
+  font-family: "Gloock", serif;
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  animation: arrive 800ms 180ms ease-out both;
+}
+
+.home__lede {
+  max-width: 32rem;
+  margin: 2rem 0 0 clamp(0rem, 15vw, 10rem);
+  color: #536057;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  animation: arrive 700ms 300ms ease-out both;
+}
+
+.home__note {
+  justify-self: end;
+  margin: 0;
+  color: #766e60;
+  animation: arrive 700ms 400ms ease-out both;
+}
+
+@keyframes arrive {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .home__lede {
+    margin-left: 0;
+  }
+
+  .home__note {
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home * {
+    animation: none;
+  }
+}

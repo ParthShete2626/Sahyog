@@ -1,0 +1,39 @@
+import {
+  HeadContent,
+  Outlet,
+  Scripts,
+  createRootRoute,
+} from "@tanstack/react-router";
+
+import styles from "../styles.css?url";
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Sahyog" },
+      {
+        name: "description",
+        content: "Sahyog — built for meaningful collaboration.",
+      },
+    ],
+    links: [{ rel: "stylesheet", href: styles }],
+  }),
+  component: Outlet,
+  shellComponent: RootDocument,
+});
+
+function RootDocument({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
